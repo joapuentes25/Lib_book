@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: greenyellow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0%;
+}
+
+.logo {
+    display: flex;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: blue;
+}
+
+button {
+    padding: 9px 25px;
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: aquamarine;
+}
+
+.navegacion {
+    display: flex;
+    color: black;
+}
+
+#p_lib_book {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.pie_de_pagina {
+    display: flex;
+    justify-content: space-around;
+    background-color: palegoldenrod;
+    color: black;
+}
+
+.pie_de_pagina>* {
+    font-size: 25px;
+    justify-content: space-around;
+}
+
+li, a, button {
+    color: black;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+}
+
+.portada {
+    background-color: lightskyblue;
+}
+
+.contenedor-inferior {
+    justify-content: space-between;
+    display: flex;
+    padding: 0px 0%;
+}
+
+.lateral-der {
+    width: 50%;
+    margin-left: auto;
+    background-color: seashell;
+    padding: 5px 0%;
+}
+
+.lateral-der ul {
+    display: flex;
+    padding: 0;
+    width: 200%;
+}
+
+.lateral-der li {
+    width: 100%;
+    list-style: none;
+}
+
+.lateral-der img {
+    width: 100%;
+}
+
+.lateral-izq {
+    background-color: seashell;
+    width: 50%;
+    height: auto;
+    text-align: left;
+    color: black;
+    margin-right: auto;
+}
+
+.formulario {
+    margin-top: 40px;
+    align-items: center;
+    align-content: center;
+}
+
+#book_izq {
+    width: 48%;
+    height: auto;
+    padding: 0px 0%;
+    margin: 0px;
+}
+
+.footer {
+    text-align: center;
+    color: black;
+    background-color: palegoldenrod;
+}
+
+#carouselExampleIndicators {
+    width: 200px;
+    height: 320px;
+}
+
+.header2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0%;
+    width: 21%;
+}
+
+.card-img-top {
+    margin-top: 20px;
+}
+
+.headerns {
+    background-color: darkseagreen;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0%;
+}
+
+button2 {
+    display: flex;
+    padding: 9px 25px;
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    width: 245px;
+}
+
+a2{
+    color: black;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+}
+
+.volverns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 160%;
+}
+
+.container2 {
+    width: 80%;
+    padding-right: 325px;
+    padding-left: 722.5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container2 {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container2 {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container2 {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container2 {
+        max-width: 1140px;
+    }
+}
+
+button2:hover {
+    background-color: aquamarine;
+}
+
+.cta{
+    display: flex;
+}

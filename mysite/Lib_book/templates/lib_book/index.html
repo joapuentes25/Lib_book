@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lib_Book</title>
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/diseño.css">
+    <!-- google jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body background="IMG/libros.png">
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="IMG/logoLib.png" height="110px" alt="logolibro">
+            </div>
+            <nav>
+                <div class="navegacion">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="nuestros_libros.html">Nuestros Libros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="sobre_nosotros.html">Sobre nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <a class="cta" href="login.html"><button>Iniciar Sesion</button></a>
+            <div>
+
+            </div>
+        </div>
+        <section>
+            <div class="portada">
+                <img id="p_lib_book" src="IMG/logolibro.png" alt="portada">
+            </div>
+        </section>
+        <section>
+            <div class="pie_de_pagina">
+                <div class="abajo_izquierda">+56 22 534 6565</div>
+                <div class="abajo_centro"> Sociedad de librerias de Santiago</div>
+                <div class="abajo_derecha">
+                    <ul>
+                        <img src="/SVG/facebook-f-brands.svg" width="10px" height="auto" alt="facebook">
+                        <img src="/SVG/envelope-solid.svg" width="18px" height="auto" alt="correo">
+                        <img src="/SVG/google-plus-g-brands.svg" width="23px" height="auto" alt="google">
+                        <img src="/SVG/instagram-brands.svg" width="18px" height="auto" alt="instagram">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-flex justify-content-around">
+            <div class="lateral-izq">
+                <h1>Libros 100% originales</h1>
+                <h5>Por lo cual no vas a quedar con las ganas de leer cosas falsas</h5>
+                <p>Tenemos libros nuevos y de segunada mano, para mas informacion has click en la pestaña nuestros libros</p>
+                <img id=book_izq src="IMG/image.jpeg" alt="">
+            </div>
+            <div class="lateral-der">
+                <section class="carusel">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img src="IMG/harry.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="IMG/harryverde.jpg" alt="">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer">
+            <br>
+            <h4> <a> Diseño Web, Desarrollado por Grupo 5</a></h4>
+        </footer>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+</html>
