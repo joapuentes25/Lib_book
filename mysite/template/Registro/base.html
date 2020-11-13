@@ -1,0 +1,204 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}" />
+    <!--fuentes de google-->
+    <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+    <!-- pagina de font awesome-->
+    <script src="https://kit.fontawesome.com/0a6512b87a.js"></script>
+    <!-- alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- el bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--las jquerys -->        
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    {% block css %}
+    
+    {% endblock %}
+    <!--los css -->
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+    <title>Lib-Book</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg sticky-top" style="color: #ebebeb; background-color:rgba(83,101,112,0.7);" >
+        <div class="container" style="font-family: cursive;">
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logolibro.png' %}" alt="Lib-Book" id="logo" class="logo"></a>
+            <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarNav">
+                {% block navbar %}
+                
+                {% endblock %}
+            </div>
+        </div>
+    </nav>
+
+    
+    {% block contenido %}
+
+    {% endblock %}
+
+    <footer>
+      <!---Footer--->
+<div>
+  <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(252, 245, 212,0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(222, 212, 164,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(223, 211, 150,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#D1C795" />
+      </g>
+  </svg>
+</div>
+
+<footer class="page-footer font-small unique-color-dark pt-4">
+  
+  <!-- Footer Links -->
+  <div class="container">
+
+  <!-- Grid row-->
+  <div class="row text-center d-flex justify-content-center pt-5 mb-3" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+
+  <!-- Grid column -->
+    <div class="col-md-2 mb-3">
+    <h6 class="text-uppercase font-weight-bold">
+    <a href="#!">Más vendidos</a>
+    </h6>
+  </div>
+  <!-- Grid column -->
+
+  <!-- Grid column -->
+  <div class="col-md-2 mb-3">
+  <h6 class="text-uppercase font-weight-bold">
+    <a href="#!">Libros</a>
+  </h6>
+  </div>
+  <!-- Grid column -->
+
+    <!-- Grid column -->
+  <div class="col-md-2 mb-3">
+  <h6 class="text-uppercase font-weight-bold">
+    <a href="#!">Contacto</a>
+  </h6>
+  </div>
+  <!-- Grid column -->
+
+  <!-- Grid column -->
+  <div class="col-md-2 mb-3">
+  <h6 class="text-uppercase font-weight-bold">
+    <a href="#!">Nuestro local</a>
+  </h6>
+  </div>
+  <!-- Grid column -->
+
+  <!-- Grid column -->
+  <div class="col-md-2 mb-3">
+  <h6 class="text-uppercase font-weight-bold">
+    <a href="#!">Visitanos</a>
+  </h6>
+  </div>
+  <!-- Grid column -->
+
+</div>
+  <!-- Grid row-->
+<hr class="rgba-white-light" style="margin: 0 15%;">
+
+<!-- Grid row-->
+<div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+<!-- Grid column -->
+<div class="col-md-8 col-12 mt-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+  <p style="line-height: 1.7rem"><b style="color: rgb(255, 255, 255);">VISITA NUESTRA LIBRERIA</b> <br> Av. La Dehesa 224, Lo Barnechea Email: contacto@lib-book.cl <br> Telefono: +56 2 3221 1154</p>
+</div>
+<!-- Grid column -->
+
+</div>
+<!-- Grid row-->
+<hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+<!-- Grid row-->
+<div class="row pb-3">
+
+<!-- CREAMOS UNA COLUMNA CON REDES SOCIALES -->
+<div class="col-md-12" style="color: rgb(255, 255, 255);">
+
+  <div class="mb-5 d-flex justify-content-center">
+    <!-- Facebook -->
+    <a class="fb-ic">
+      <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+    </a>
+    <!-- Twitter -->
+    <a class="tw-ic">
+      <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
+    </a>
+    <!-- Google +-->
+    <a class="gplus-ic">
+      <i class="fab fa-google-plus-g fa-lg white-text mr-4"> </i>
+    </a>
+    <!--Linkedin -->
+    <a class="li-ic">
+      <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
+    </a>
+    <!--Instagram-->
+    <a class="ins-ic">
+      <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
+    </a>
+    <!--Pinterest-->
+    <a class="pin-ic">
+      <i class="fab fa-pinterest fa-lg white-text"> </i>
+    </a>
+  </div>
+
+  </div>
+  <!-- Grid column -->
+
+  </div>
+  <!-- Grid row-->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- CREAMOS UNA COLUMNA CON COPYRIGHT -->
+  <div class="footer-copyright text-center py-3" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">© 2020 Copyright: Gestión Ágil de Proyectos
+       <a href="#" style="color: white"> www.Lib-Book.cl</a>
+  </div>
+  <!-- Copyright -->
+
+  </footer>
+</div>
+    </footer>
+
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--JQuery UI-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+    <!--Popper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <!--JSBootstrap-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!--JS Parallax-->
+    <script src='{% static "js/parallax.min.js" %}'></script>
+    {% block javascript %}
+    {% endblock %}
+</body>
+
+</html>

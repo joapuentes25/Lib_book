@@ -1,0 +1,204 @@
+{% extends 'App/base.html'%}
+
+{% load staticfiles%}
+
+{% block navbar %}
+    <ul class="navbar-nav ml-auto" style="font-family: cursive;">
+        {% if user.is_authenticated %}
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-light btn-xs"><li class="nav-item">
+                <a class="nav-link" href="{% url 'agregar-libro' %}">Agregar</a>
+            </li></button>
+            <button type="button" class="btn btn-outline-light btn-xs"><li class="nav-item">
+                <a class="nav-link" href="{% url 'listado-libros' %}">Mis Libros</a>
+            </li></button>
+            <button type="button" class="btn btn-outline-light btn-xs"><li class="nav-item">
+                <a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a>
+            </li></button>
+
+            
+            
+            
+            {% if request.user.groups.all.0.name == 'Mantenedor' %}
+            <button type="button" class="btn btn-outline-light btn-xs"><li class="nav-item">
+                <a class="nav-link" href="#">Usuario: {{ user.username }}</a>
+            </li></button>
+
+                
+            {% else %}
+            <button type="button" class="btn btn-outline-light btn-xs"><li class="nav-item">
+                <a class="nav-link" href="{% url 'perfil' %}">Usuario: {{ user.username }}</a>
+            </li></button>
+
+                
+            {% endif %}
+            <button type="button" class="btn btn-info btn-xs"><li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+            </li></button>
+
+            
+        </div>
+        {% else %}
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-info btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        </button>
+        <button type="button" class="btn btn-outline-info btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'registro-usuario' %}">Registro</a>
+            </li>
+        </button>
+        </div>
+        {% endif %}
+    </ul>
+    
+{% endblock %}
+
+{% block contenido %}
+
+    <!--Header-->
+   <header>
+       
+    </header>
+    
+
+
+    <!--portada-->
+    <section id="portada" class="parallax" data-parallax="scroll" data-z-index="1"
+        data-image-src="{% static 'img/image.jpeg' %}">
+        
+    </section>
+
+    <!-- libros mas vendidos -->
+    <section id="vendidos" class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="container text-center pt-3">
+            <h2 style="font-family: cursive; color: #536570;">Nuestros libros más vendidos del mes</h2>
+            <hr style="background-color: black;
+            height: 1px;
+            width: 10%;">
+        </div>
+
+        
+        <div class="container tarjet">
+            <!-- tarjetas -->
+            <div class="card-deck pb-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                <!--card-->
+                <div class="card mtop-5" style="width: 18rem;">
+                    <img src="{% static 'img/1.jpg' %}" class="card-img-top" alt="" style="width: 100%; height: 71%;">
+                    <div class="card-body ">
+                        <h6 class="card-title">Nombre: Amor y matrimonio</h6>
+                        <h6 class="card-title">Precio: $12.990</h6>
+                        <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#fightclub">Más</a>
+                    </div>
+                </div>
+                <!--card-->
+                <div class="card mtop-5" style="width: 18rem;">
+                    <img src="{% static 'img/2.jpg' %}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title">Nombre: Cautivado por la alegría</h6>
+                        <h6 class="card-title">Precio: $6.990</h6>
+                        <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#psycho">Más</a>
+                    </div>
+                </div>
+                <!--card-->
+                <div class="card mtop-5" style="width: 18rem;">
+                    <img src="{% static 'img/3.jpg' %}" class="card-img-top" alt="" style="width: 100%; height: 71%;">
+                    <div class="card-body ">
+                        <h6 class="card-title">Nombre: Corazón libre</h6>
+                        <h6 class="card-title">Precio: $9.990</h6>
+                        <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#escapada">Más</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- libros mas vendidos -->
+    <div class="dentro">
+        <div class="modal fade" id="fightclub" tabindex="-1" role="dialog" aria-labelledby="fightclub"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lblfightclub">Amor y matrimonio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{% static 'img/1.jpg' %}" class="card-img-top" alt="">
+                        <p class="pt-4" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Una visión sosegada y optimista de la institución matrimonial divina, llena de implicaciones sobrenaturales y humanas. Una valiosa ayuda para quienes se preparan para casarse y para fortalecer a los esposos en su matrimonio.
+
+                            Cuando un hombre y una mujer van al matrimonio, buscan en él una nueva dimensión que perfeccione sus vidas. Ninguno de los dos experimenta pérdida ni disminución de su personalidad en esa entrega que se hacen de sí mismos, sino que se enriquecen mutuamente con las virtudes que cada uno aporta.</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="psycho" tabindex="-1" role="dialog" aria-labelledby="psycho" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lblpsycho">Cautivado por la alegría</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{% static 'img/2.jpg' %}" class="card-img-top" alt="">
+                        <p class="pt-4" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Cautivado por la Alegría es la narración autobiográfica que C.S. Lewis escribió para responder a las numerosas peticiones que le llegaron para que relatara su proceso de conversión al cristianismo. Se remonta para ello a su propia infancia, de modo que «cuando llegue explícitamente la crisis espiritual, el lector pueda comprender qué clase de persona me habían hecho mi infancia y adolescencia».</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="escapada" tabindex="-1" role="dialog" aria-labelledby="lblsinaliento"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lblsinaliento">Corazon libre</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{% static 'img/3.jpg' %}" class="card-img-top" alt="sinaliento">
+                        <p class="pt-4" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">A diferencia del animal, que determina su voluntad por el instinto, el hombre posee una voluntad libre: es capaz de hacer elecciones. Sin embargo, más allá de esta libertad de base –de esta voluntad libre–, existe una libertad superior: la libertad del corazón. Un corazón libre es un corazón que está acostumbrado a decir que sí a valores trascendentales, a impulsos e inspiraciones divinas, cuando estos se manifiestan en las profundidades de su ser. Nuestro grado de libertad depende de la frecuencia e intensidad de estos «síes».</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- sección detras-->
+    <div class="parallax" data-parallax="scroll" data-z-index="1" data-image-src="{% static 'img/parallax/maslibros.jpg' %}"></div>
+
+
+    <!-- ubicación -->
+    <section class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded" id="ubica">
+        <div class="text-center py-4">
+            <h2 style="font-family: cursive; color: #536570;">Ubicación</h2>
+            <hr>
+            <h4 class="ubica" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #536570;">Vive la lectura en nuestros locales de atención</h4>
+            <p style="color: #536570;">A continuación verás nuestra ubicación en el mapa, ¡Ven a visitarnos!</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425187.8603003704!2d-70.97637296968927!3d-33.63694177446593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cbdd33b50139%3A0xb5181b9e63483e60!2sLibreria%20Antartica!5e0!3m2!1ses!2scl!4v1591063663505!5m2!1ses!2scl" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+
+        
+    </section>
+
+{% endblock %}
