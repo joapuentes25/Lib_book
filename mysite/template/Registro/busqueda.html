@@ -1,0 +1,127 @@
+{% extends 'App/base.html'%}
+
+{% load static %}
+
+{% block javascript %}
+
+    <script src="{% static 'js/confirmacion2.js' %}"></script>
+
+{% endblock %}
+
+{% block navbar%}
+    <ul class="navbar-nav ml-auto">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-light btn-xs">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index'%}">Inicio</a>
+        </li></button>
+        {% if user.is_authenticated %}
+        
+        <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'agregar-libro' %}">Agregar</a>
+            </li>
+        </button>
+        <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listado-libros' %}">Mis Libros</a>
+            </li>
+        </button>
+        <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a>
+            </li>
+        </button>
+            {% if request.user.groups.all.0.name == 'Mantenedor' %}
+            <button type="button" class="btn btn-outline-light btn-xs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Usuario: {{ user.username }}</a>
+                </li>
+            </button>
+            {% else %}
+            <button type="button" class="btn btn-outline-light btn-xs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Usuario: {{ user.username }}</a>
+                </li>
+            </button>
+            {% endif %}
+            <button type="button" class="btn btn-info btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+            </li>
+            </button>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        </div>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded" style="margin-bottom: 100vh;">
+        <h2 class="text-center" style="font-family: cursive; color: #536570;">Buscar un Libro</h2>
+        <h4 class="text-center mb-5" style="color: #536570; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">En esta sección puedes buscar libros a través de su título o autor.</h4>
+
+        <form class="form-inline mb-5" action="" method="GET" style="font-family: cursive; color: #536570;">
+            <div class="form-group mx-3">
+                <label class="mr-2">Buscar por título:</label>
+                <input class="form-control mr-2" type="text" name="titulo">
+                <button class="btn btn-secondary" type="submit" name="btn-titulo" style="background-color: #D1C795;">Buscar</button>
+            </div>
+
+            <div class="form-group mx-3">
+                <label class="mx-2">Buscar por autor:</label>
+                <input class="form-control mx-2" type="text" name="autor">
+                <button class="btn btn-secondary" type="submit" name="btn-autor" style="background-color: #D1C795;">Buscar</button>
+            </div>
+        </form>
+
+        <!--tabla-->
+        <table class="table table-striped table-light table-responsive-lg" style="background-color: #DFD7CB; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <thead>
+                <tr>
+                    
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Año</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Portada libro</th>
+                    {% if request.user.groups.all.0.name == 'Mantenedor' %}
+                    <th scope="col">Eliminar Libro</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in libros %}
+
+                <tr>
+                    
+                    <td scope="row">{{p.titulo}}</td>
+                    <td scope="row">{{p.año}}</td>
+                    <td scope="row">${{p.precio}}</td>
+                    <td scope="row">{{p.autor}}</td>
+                    <td scope="row">{{p.descripcion}}</td>
+                    <td scope="row">{{p.tipo}}</td>
+                    <td scope="row">{{p.user.username}}</td>
+                    {% if p.imagen %}
+                    <td scope="row"><img src="{{ p.imagen.url }}" class="card-img-top" alt="imagen"></td>
+                    {% else %}
+                    <td scope="row"><img src="{% static 'img/captura.png' %}" class="card-img-top" alt="imagen"></td>
+                    {% endif %}
+                    {% if request.user.groups.all.0.name == 'Mantenedor' %}
+                        <td scope="row" style="font-family: cursive;"><a class="btn btn-primary" href="#" onclick="confirmarEliminacion2({{p.id}});"><i class="far fa-trash fa-1x"></i></a></td>
+                    {% endif %}                        
+                </tr>
+        
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

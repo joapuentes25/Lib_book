@@ -1,0 +1,75 @@
+{% extends 'App/base.html'%}
+
+{% block navbar%}
+    <ul class="navbar-nav ml-auto">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-light btn-xs">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index'%}">Inicio</a>
+        </li></button>
+        {% if user.is_authenticated %}
+        
+            <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'agregar-libro' %}">Agregar</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listado-libros' %}">Mis Libros</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a>
+            </li>
+            </button>
+            {% if request.user.groups.all.0.name == 'Mantenedor' %}
+            <button type="button" class="btn btn-outline-light btn-xs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Usuario: {{ user.username }}</a>
+                </li>
+            </button>
+            {% else %}
+            <button type="button" class="btn btn-outline-light btn-xs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'perfil' %}">Usuario: {{ user.username }}</a>
+                </li>
+            </button>
+            {% endif %}
+            <button type="button" class="btn btn-info btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+            </li>
+            </button>
+        </div>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded" style="margin-bottom: 100vh; ">
+    
+    <h2 style="color: #536570; font-family: cursive;">Agregar Libro</h2>
+    <p style="color: #536570; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">En esta sección puedes agregar libros</p>
+    <form class="container py-3" style="background-color:#DFD7CB; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <table class="table table-responsive">
+            {{ form.as_table }}
+        </table> 
+        <div class="py-4">
+            <input class="btn btn-secondary" type="submit" value="Agregar">
+            <input class="btn btn-outline-secondary" type="reset" value="Limpiar">
+            <a class="btn btn-outline-secondary" href="{% url 'listado-libros'%}">Visualizar Libros</a>
+        </div> 
+        {{ mensaje }}    
+    </form>
+    
+</div>
+
+{% endblock %}

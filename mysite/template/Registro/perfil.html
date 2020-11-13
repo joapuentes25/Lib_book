@@ -1,0 +1,98 @@
+{% extends 'App/base.html'%}
+
+{% block navbar%}
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index'%}">Inicio</a>
+        </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'agregar-libro' %}">Add Libro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listado-libros' %}">Mis Libros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'busqueda' %}">Recomendaciones</a>
+            </li>
+            {% if request.user.groups.all.0.name == 'Mantenedor' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">User: {{ user.username }}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'perfil' %}">User: {{ user.username }}</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block contenido %}
+<div class="pb-5 pt-3 container shadow-lg" style="margin-bottom: 100vh;">
+    <h2 class="pt-2 pb-4">Bienvenido/a: {{ user.username }}</h2>
+    <form>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ user.first_name }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Apellido:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ user.last_name }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ user.email }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">RUN:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ perfil.run }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha nacimiento:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ perfil.fecha_nac }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Telefono:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ perfil.telefono }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Region:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ perfil.region }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Ciudad:</label>
+            <div class="col-sm-10">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{ perfil.ciudad }}</label>
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <a class="btn btn-success" href="{% url 'agregar-libro'%}">Agregar Libro</a>
+        <a class="btn btn-primary" href="{% url 'listado-libros'%}">Visualizar Libros</a>
+    </div>
+</div>
+{% endblock %}
+
+
