@@ -18,4 +18,7 @@ urlpatterns = [
     path('registro-usuario/', views.registrar_usuario, name="registro-usuario"),
     path('perfil/', views.perfil, name="perfil"),
     path('api/', include(router.urls)), 
+    
+    path('', include('social_django.urls', namespace='social')),  
+    
 ]

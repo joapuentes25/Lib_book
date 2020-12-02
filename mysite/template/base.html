@@ -1,0 +1,53 @@
+<!-- base.html -->
+{% load static %}
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        {% block css %} {% endblock css %}
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    </head>
+    <body>
+    {% block navbar %}
+    <!-- Cabezera -->
+    <nav id="navbar">
+        <div id="navbar-logo">
+            <img src="{% static 'images/img/logo.png' %}" alt="logo">
+        </div>
+
+        <div id="nav">
+            <ul>
+                <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+
+                <li class="nav-item"><a href="{% url 'registrar' %}">Registrar usuario</a></li>
+
+                {% if not user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'registrar' %}">registrarse</a></li>
+                <li class="nav-item"><a href="{% url 'login' %}">iniciar sesión</a></li>
+                {% endif %}
+[0:35]
+{% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                {% endif %}
+
+                <li class="nav-item"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                <span class="ml-md-5" style="color: blue;"><strong>Usuario: {{ user.get_username }}</strong></span>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% endblock %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div>
+        {% block footer %} {% endblock %}
+    </div>
+    {% block javascript %} {% endblock javascript %}
+    </body>
+</html>

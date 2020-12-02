@@ -1,0 +1,103 @@
+{% extends 'App/base.html'%}
+
+{% load static %}
+
+{% block javascript %}
+
+    <script src="{% static 'js/confirmacion.js' %}"></script>
+
+{% endblock %}
+
+{% block navbar%}
+    <ul class="navbar-nav ml-auto">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-light btn-xs">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index'%}">Inicio</a>
+        </li></button>
+        {% if user.is_authenticated %}
+        
+            <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'agregar-libro' %}">Agregar</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listado-libros' %}">Mis Libros</a>
+            </li>
+            </button>
+            <button type="button" class="btn btn-outline-light btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a>
+            </li>
+            </button>
+            {% if request.user.groups.all.0.name == 'Mantenedor' %}
+            <button type="button" class="btn btn-outline-light btn-xs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Usuario: {{ user.username }}</a>
+                </li>
+            </button>
+            {% else %}
+            <button type="button" class="btn btn-outline-light btn-xs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'perfil' %}">Usuario: {{ user.username }}</a>
+                </li>
+            </button>
+            {% endif %}
+            <button type="button" class="btn btn-info btn-xs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+            </li>
+            </button>
+        </div>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded" style="margin-bottom: 100vh;">
+    <h2 class="pt-2 pb-4" style="font-family: cursive; color: #536570;">Administrar Libros</h2>
+    <p style="color: #536570; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">En esta sección puedes modificar o eliminar libros</p>
+    <table class="table table-light table-striped table-responsive-lg" style="background-color: #DFD7CB; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+        <thead>
+            <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Año</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Portada libro</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in libros %}
+
+            <tr>
+                <td scope="row">{{p.titulo}}</td>
+                <td scope="row">{{p.año}}</td>
+                <td scope="row">${{p.precio}}</td>
+                <td scope="row">{{p.autor}}</td>
+                <td scope="row">{{p.descripcion}}</td>
+                <td scope="row">{{p.tipo}}</td>
+                {% if p.imagen %}
+                    <td scope="row"><img src="{{ p.imagen.url }}" class="card-img-top" alt="imagen"></td>
+                    {% else %}
+                    <td scope="row"><img src="{% static 'img/captura.png' %}" class="card-img-top" alt="imagen"></td>
+                {% endif %} 
+                <td scope="row"><a class="btn btn-secondary" href="{% url 'modificar-libro' p.id %}"><i class="far fa-pencil-alt fa-1x" style="color: white;"></i></a></td>
+                <td scope="row"><a class="btn btn-secondary" href="#" onclick="confirmarEliminacion({{p.id}});"><i class="far fa-trash fa-1x" style="color: white;"></i></a></td>
+            </tr>
+    
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}
