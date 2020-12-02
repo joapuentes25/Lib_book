@@ -14,6 +14,10 @@ Registro
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+
+
 <div id="registro" class="container">
     <h1 class="display">Login</h1><br>
     <form method="POST" id="formulario">
