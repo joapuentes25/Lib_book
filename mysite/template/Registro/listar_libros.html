@@ -1,0 +1,30 @@
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Listar Libros</title>
+  </head>
+ 
+  <body>
+    <h2>Lista de carreras</h2>
+ 
+    {% for Libros %}
+        <div>
+            <p> Titulo: {{ titulo }} </p>
+            <p>Año: {{ año }} </p>
+            <p>Precio: {{ Precio }} </p>
+            <p> Autor: {{ autor }} </p>
+            <p>Descripcion: {{ descripcion }} </p>
+            <p>Tipo: {{ autor }} </p>
+            <p>Imagen: {{ imagen }} </p>
+            <p> Opciones: {{ user }} </p>
+        </div>
+        <br>
+    {% endfor %}
+ 
+  </body>
+</html>
