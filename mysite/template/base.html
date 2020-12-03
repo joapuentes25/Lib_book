@@ -13,20 +13,20 @@
     <!-- Cabezera -->
     <nav id="navbar">
         <div id="navbar-logo">
-            <img src="{% static 'images/img/logo.png' %}" alt="logo">
+            <img src="{% static 'images/img/logo.png' %}" height="90px" alt="logo">
         </div>
 
         <div id="nav">
             <ul>
                 <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
 
-                <li class="nav-item"><a href="{% url 'registrar' %}">Registrar usuario</a></li>
+                <li class="nav-item"><a href="{% url 'registrar' %}">Registro usuario</a></li>
 
                 {% if not user.is_authenticated %}
-                <li class="nav-item"><a href="{% url 'registrar' %}">registrarse</a></li>
+                <li class="nav-item"><a href="{% url 'registrar' %}">Registro</a></li>
                 <li class="nav-item"><a href="{% url 'login' %}">iniciar sesión</a></li>
                 {% endif %}
-[0:35]
+
 {% if user.is_authenticated %}
                 {% if user.is_superuser %}
                 {% endif %}

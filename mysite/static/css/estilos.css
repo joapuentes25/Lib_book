@@ -1,0 +1,48 @@
+.content {
+    width: 100%;
+}
+
+body {
+    background-color: orange;
+}
+
+#navbar {
+    background-color: blue;
+    padding: 1em 1em;
+    display: flex;
+    align-content: center;
+    width: 100%;
+}
+
+#navbar li,
+#contact li {
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.2s;
+}
+
+#navbar li a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 8px;
+    margin: 3px 3px;
+    display: inline-block;
+    text-shadow: 1px 1px 2px grey;
+}
+
+#navbar li:hover {
+    background-color: aqua;
+    border-radius: 3px;
+}
+
+#titulo_pagina {
+    background-color: aqua;
+    /* padding: 2em 1em; */
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
