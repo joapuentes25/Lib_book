@@ -1,6 +1,9 @@
 <!-- base.html -->
 {% load static %}
 <html>
+{% load pwa %}
+{% progressive_web_app_meta %}
+
     <head>
         <title>{% block title %}{% endblock title %}</title>
         {% block css %} {% endblock css %}

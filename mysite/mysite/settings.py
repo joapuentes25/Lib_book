@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'social_django',
     'social.apps.django_app.default',
     'Lib_book',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -154,4 +155,27 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '966ce8041eda9387d40d4b9c1a57b3f9'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+#------------------------------ PWA---------------------
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+
+
+PWA_APP_NAME = 'Proyecto Registro Libro'
+PWA_APP_DESCRIPTION = 'Registro Libros'
+PWA_APP_THEME_COLOR = '#87EFC3'
+PWA_APP_BACKGROUND_COLOR = '#fff'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/images/icons/Book.png',
+        'sizes': '128x128'
+    },
+    {
+        'src': '/static/images/icons/Book(1).png',
+        'sizes': '256x256'
+    },
+    {
+        'src': '/static/images/icons/Book(2).png',
+        'sizes': '512x512'
+    }
+]
 
